@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Involved — Rural Systems</title>
+  <meta name="description" content="Four ways to join the mission. Whether you bring capital, community, policy, or talent.">
+  <meta name="theme-color" content="#0D0F0E">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">Rural Systems</a>
+      <nav class="nav-desktop" id="nav-desktop">
+        <a href="vision.html">Vision</a>
+        <a href="model.html">Model</a>
+        <a href="partner.html">Partner</a>
+        <a href="communities.html">Communities</a>
+        <a href="founder.html">Founder</a>
+        <a href="contact.html" class="nav-cta active">Get Involved</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="nav-mobile" id="nav-mobile">
+    <a href="vision.html">Vision</a>
+    <a href="model.html">Model</a>
+    <a href="partner.html">Partner</a>
+    <a href="communities.html">Communities</a>
+    <a href="founder.html">Founder</a>
+    <a href="contact.html" class="active">Get Involved</a>
+  </nav>
+
+  <!-- ========== PAGE HERO ========== -->
+  <section class="page-hero">
+    <div class="container container--text reveal">
+      <span class="text-label text-gold">Get Involved</span>
+      <h1>Four Ways to Join the Mission</h1>
+      <p class="text-large">Whether you bring capital, community, policy, or talent—there is a role for you.</p>
+    </div>
+  </section>
+
+  <!-- ========== FORMS GRID ========== -->
+  <section class="content-section" style="padding-top: 0;" id="forms">
+    <div class="container">
+      <div class="two-col">
+        
+        <!-- Business Form -->
+        <div class="card reveal reveal-delay-1" id="business">
+          <h3 class="text-gold" style="margin-bottom: 0.25rem;">For Businesses & Investors</h3>
+          <p style="margin-bottom: var(--space-lg); font-size: 0.95rem;">Deploy capital into verified rural opportunities.</p>
+          
+          <form data-form="business-inquiry">
+            <div class="form-group">
+              <label for="b-company">Company / Organization Name</label>
+              <input type="text" id="b-company" name="company" required>
+            </div>
+            <div class="form-group">
+              <label for="b-name">Contact Name</label>
+              <input type="text" id="b-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="b-email">Email Address</label>
+              <input type="email" id="b-email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="b-sector">Industry / Sector</label>
+              <input type="text" id="b-sector" name="sector" required>
+            </div>
+            <div class="form-group">
+              <label for="b-range">Potential Investment Range</label>
+              <select id="b-range" name="investment_range" required>
+                <option value="">Select...</option>
+                <option value="< $100K">Under $100,000</option>
+                <option value="$100K - $500K">$100,000 - $500,000</option>
+                <option value="$500K - $2M">$500,000 - $2,000,000</option>
+                <option value="$2M+">$2,000,000+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="b-message">What are you looking to achieve?</label>
+              <textarea id="b-message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary" style="width: 100%; justify-content: center;">Schedule a Discussion</button>
+          </form>
+        </div>
+
+        <!-- Community Form -->
+        <div class="card reveal reveal-delay-2" id="community" style="background: var(--bg-tertiary); border-color: var(--accent-green-dim);">
+          <h3 class="text-green" style="margin-bottom: 0.25rem;">For Communities</h3>
+          <p style="margin-bottom: var(--space-lg); font-size: 0.95rem;">Bring Rural Systems to your village.</p>
+          
+          <form data-form="community-interest">
+            <div class="form-group">
+              <label for="c-community">Community Name</label>
+              <input type="text" id="c-community" name="community" required style="background: var(--bg-primary);">
+            </div>
+            <div class="form-group">
+              <label for="c-contact">Contact Person</label>
+              <input type="text" id="c-contact" name="contact" required style="background: var(--bg-primary);">
+            </div>
+            <div class="form-group">
+              <label for="c-contact-info">Email or Phone Number</label>
+              <input type="text" id="c-contact-info" name="contact_info" required style="background: var(--bg-primary);">
+            </div>
+            <div class="form-group">
+              <label for="c-region">Region / Country</label>
+              <input type="text" id="c-region" name="region" required style="background: var(--bg-primary);">
+            </div>
+            <div class="form-group">
+              <label for="c-households">Approximate Households</label>
+              <select id="c-households" name="households" required style="background: var(--bg-primary);">
+                <option value="">Select...</option>
+                <option value="< 50">Fewer than 50</option>
+                <option value="50 - 200">50 - 200</option>
+                <option value="200 - 500">200 - 500</option>
+                <option value="500+">More than 500</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="c-message">Tell us about your community's goals</label>
+              <textarea id="c-message" name="message" required style="background: var(--bg-primary);"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary" style="width: 100%; justify-content: center; background: var(--accent-green); color: white;">Express Interest</button>
+          </form>
+        </div>
+
+        <!-- Government Form -->
+        <div class="card reveal reveal-delay-1" id="government">
+          <h3 style="margin-bottom: 0.25rem;">For Governments & Agencies</h3>
+          <p style="margin-bottom: var(--space-lg); font-size: 0.95rem;">A deployable framework for rural transformation.</p>
+          
+          <form data-form="government-inquiry">
+            <div class="form-group">
+              <label for="g-org">Organization / Ministry</label>
+              <input type="text" id="g-org" name="organization" required>
+            </div>
+            <div class="form-group">
+              <label for="g-name">Your Name & Title</label>
+              <input type="text" id="g-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="g-email">Official Email Address</label>
+              <input type="email" id="g-email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="g-country">Country / Region</label>
+              <input type="text" id="g-country" name="country" required>
+            </div>
+            <div class="form-group">
+              <label for="g-interest">Area of Interest</label>
+              <select id="g-interest" name="interest_area" required>
+                <option value="">Select...</option>
+                <option value="National Program">National Deployment Program</option>
+                <option value="Technical Assistance">Technical Assistance / Advisory</option>
+                <option value="Research Partnership">Research & Data Partnership</option>
+                <option value="Licensing">Template Licensing</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="g-message">Message</label>
+              <textarea id="g-message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--secondary" style="width: 100%; justify-content: center;">Request a Briefing</button>
+          </form>
+        </div>
+
+        <!-- Talent Form -->
+        <div class="card reveal reveal-delay-2" id="talent" style="background: var(--bg-secondary);">
+          <h3 style="margin-bottom: 0.25rem;">For Talent & Collaborators</h3>
+          <p style="margin-bottom: var(--space-lg); font-size: 0.95rem;">The most meaningful work you could do.</p>
+          
+          <form data-form="talent-inquiry">
+            <div class="form-group">
+              <label for="t-name">Your Name</label>
+              <input type="text" id="t-name" name="name" required style="background: var(--bg-primary);">
+            </div>
+            <div class="form-group">
+              <label for="t-email">Email Address</label>
+              <input type="email" id="t-email" name="email" required style="background: var(--bg-primary);">
+            </div>
+            <div class="form-group">
+              <label for="t-expertise">Area of Expertise (e.g., Engineering, Law, Finance)</label>
+              <input type="text" id="t-expertise" name="expertise" required style="background: var(--bg-primary);">
+            </div>
+            <div class="form-group">
+              <label for="t-message">How do you want to contribute?</label>
+              <textarea id="t-message" name="message" required style="background: var(--bg-primary); min-height: 180px;"></textarea>
+            </div>
+            <div style="margin-top: calc(var(--space-md) * 2.8);">
+              <button type="submit" class="btn btn--ghost" style="width: 100%; justify-content: center; border: 1px solid var(--border-medium); border-radius: 8px;">Join the Mission</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT INFO ========== -->
+  <section class="content-section section--dark" style="text-align: center; border-top: 1px solid var(--border-subtle);">
+    <div class="container container--narrow reveal">
+      <p class="text-large" style="margin-bottom: var(--space-md);">We read every message. If your work aligns with our mission, we will respond.</p>
+      
+      <div style="display: flex; flex-direction: column; gap: var(--space-sm); align-items: center; margin-top: var(--space-lg);">
+        <a href="mailto:connect@ruralsystems.org" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--text-primary); text-decoration: none;">connect@ruralsystems.org</a>
+        
+        <div style="display: flex; gap: var(--space-md); margin-top: var(--space-md);">
+          <a href="https://linkedin.com/company/ruralsystems" target="_blank" rel="noopener" class="text-label" style="text-decoration: none; border-bottom: 1px solid var(--accent-gold);">LinkedIn</a>
+          <a href="https://x.com/ruralsystems" target="_blank" rel="noopener" class="text-label" style="text-decoration: none; border-bottom: 1px solid var(--accent-gold);">X (Twitter)</a>
+          <a href="https://youtube.com/@ruralsystems" target="_blank" rel="noopener" class="text-label" style="text-decoration: none; border-bottom: 1px solid var(--accent-gold);">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Rural Systems</a>
+          <p>The operating system for rural reinvention. Building communities where dignity is the default.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-links-group">
+            <h5>Explore</h5>
+            <a href="vision.html">Vision</a>
+            <a href="model.html">Model</a>
+            <a href="founder.html">Founder</a>
+          </div>
+          <div class="footer-links-group">
+            <h5>Engage</h5>
+            <a href="partner.html">Partner With Us</a>
+            <a href="communities.html">For Communities</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="footer-links-group">
+            <h5>Connect</h5>
+            <a href="https://linkedin.com/company/ruralsystems" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://x.com/ruralsystems" target="_blank" rel="noopener">X (Twitter)</a>
+            <a href="https://youtube.com/@ruralsystems" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Rural Systems. All rights reserved.</span>
+        <span>connect@ruralsystems.org</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
