@@ -118,11 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ---- 7. Form handling via Formspree ----
-  // All forms POST to Formspree which forwards to connect@ruralsystems.org
-  // To activate: Replace YOUR_FORM_ID below with your Formspree form ID.
-  // Get one free at https://formspree.io — create a form linked to connect@ruralsystems.org
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+  // ---- 7. Form handling via Vercel Serverless + Brevo ----
+  // All forms POST to /api/contact which sends emails via Brevo
+  const CONTACT_API = '/api/contact';
 
   document.querySelectorAll('form[data-form]').forEach(form => {
     form.addEventListener('submit', async (e) => {
@@ -138,19 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.disabled = true;
       btn.style.opacity = '0.7';
 
-      // Collect form data and add metadata
+      // Collect form data as JSON
       const formData = new FormData(form);
-      formData.append('_form_type', formType);
-      formData.append('_subject', `Rural Systems — ${formType.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}`);
+      const payload = Object.fromEntries(formData);
+      payload._form_type = formType;
 
       try {
-        const response = await fetch(FORMSPREE_ENDPOINT, {
+        const response = await fetch(CONTACT_API, {
           method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
         });
 
-        if (response.ok) {
+        const result = await response.json();
+
+        if (response.ok && result.success) {
           // Success
           btn.textContent = 'Message Received ✓';
           btn.style.background = 'var(--accent-green)';
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.background = originalBg;
           }, 4000);
         } else {
-          throw new Error('Server responded with an error');
+          throw new Error(result.error || 'Submission failed');
         }
       } catch (error) {
         // Error state
