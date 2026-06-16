@@ -957,45 +957,176 @@ blockquote cite {
 .reveal-delay-4 { transition-delay: 0.4s; }
 
 /* --- Responsive --- */
+
+/* ---- Tablet (≤ 1024px) ---- */
 @media (max-width: 1024px) {
   .card-grid--4 { grid-template-columns: repeat(2, 1fr); }
-  .two-col { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; gap: var(--space-lg); }
   .two-col--wide-right,
   .two-col--wide-left { grid-template-columns: 1fr; }
   .founder-section { grid-template-columns: 1fr; }
   .audience-grid { grid-template-columns: 1fr; }
 }
 
+/* ---- Mobile (≤ 768px) ---- */
 @media (max-width: 768px) {
   :root {
-    --space-3xl: 5rem;
-    --space-4xl: 7rem;
+    --space-2xl: 3.5rem;
+    --space-3xl: 4rem;
+    --space-4xl: 5rem;
   }
 
+  /* Navigation */
   .nav-desktop { display: none; }
   .nav-toggle { display: block; }
 
+  /* Typography scaling */
+  p { font-size: 1rem; }
+  .text-large { font-size: 1.05rem; }
+
+  /* Grid layouts — single column */
   .card-grid--4,
   .card-grid--3,
   .card-grid--2 { grid-template-columns: 1fr; }
 
+  /* Cards with grid-column spans must reset */
+  .card[style*="grid-column"] {
+    grid-column: auto !important;
+    max-width: 100% !important;
+  }
+
+  /* Stats strip */
   .stats-strip {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
   }
 
-  .footer-inner { flex-direction: column; }
+  /* Card padding reduction */
+  .card { padding: var(--space-md); }
+
+  /* Hero */
+  .hero { min-height: 85vh; }
+  .hero-content { padding: var(--space-lg) var(--space-sm); }
+
+  /* Page hero */
+  .page-hero {
+    padding-top: calc(var(--header-height) + var(--space-2xl));
+    padding-bottom: var(--space-lg);
+  }
+
+  /* Content sections */
+  .content-section { padding: var(--space-xl) 0; }
+
+  /* Blockquote */
+  blockquote {
+    padding-left: var(--space-md);
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+  }
+
+  /* Two-column layouts */
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  /* Founder monogram */
+  .founder-visual {
+    width: 120px !important;
+    height: 120px !important;
+    aspect-ratio: 1 !important;
+    margin: 0 auto var(--space-lg) !important;
+  }
+  .founder-monogram { font-size: 2.5rem !important; }
+
+  /* Tables: horizontal scroll wrapper */
+  .styled-table {
+    font-size: 0.85rem;
+    min-width: 600px;
+  }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; gap: var(--space-lg); }
   .footer-links { flex-direction: column; gap: var(--space-lg); }
   .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
 
-  .hero { min-height: 90vh; }
+  /* CTA section */
+  .cta-section { min-height: 45vh; }
 
-  blockquote {
-    padding-left: var(--space-md);
+  /* Forms */
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 0.9rem 1rem;
+  }
+
+  /* Buttons — full width on mobile */
+  .btn { 
+    padding: 0.85rem 1.5rem; 
+    font-size: 0.9rem; 
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Scroll indicator — hide on mobile */
+  .scroll-indicator { display: none; }
+
+  /* Audience grid */
+  .audience-col { padding: var(--space-lg) var(--space-md); }
+
+  /* Flex step cards (communities page) */
+  .card[style*="display: flex"] {
+    flex-direction: column !important;
   }
 }
 
+/* ---- Small Mobile (≤ 480px) ---- */
 @media (max-width: 480px) {
+  :root {
+    --space-xl: 2.5rem;
+    --space-2xl: 3rem;
+    --space-3xl: 3.5rem;
+    --space-4xl: 4rem;
+  }
+
   .container { padding: 0 var(--space-sm); }
-  .btn { padding: 0.75rem 1.5rem; font-size: 0.85rem; }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.3rem; }
+
+  .hero { min-height: 80vh; }
+
+  .page-hero {
+    padding-top: calc(var(--header-height) + var(--space-xl));
+  }
+
+  /* Inline styled elements — force mobile-friendly widths */
+  [style*="max-width: 50%"],
+  [style*="max-width: 60%"],
+  [style*="max-width: 65ch"] {
+    max-width: 100% !important;
+  }
+
+  /* Inline padding overrides */
+  [style*="padding: var(--space-lg)"] {
+    padding: var(--space-md) !important;
+  }
+
+  /* Inline font-size overrides for large display numbers */
+  [style*="font-size: 3rem"] {
+    font-size: 2.2rem !important;
+  }
+
+  /* Founder page closing quote */
+  [style*="font-size: clamp(1.8rem"] {
+    font-size: 1.4rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Contact page form cards */
+  .card form .two-col {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
 }

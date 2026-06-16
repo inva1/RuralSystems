@@ -118,27 +118,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ---- 7. Form handling (placeholder — logs to console) ----
-  document.querySelectorAll('form[data-form]').forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-      console.log('Form submitted:', form.getAttribute('data-form'), data);
+  // ---- 7. Form handling via Formspree ----
+  // All forms POST to Formspree which forwards to connect@ruralsystems.org
+  // To activate: Replace YOUR_FORM_ID below with your Formspree form ID.
+  // Get one free at https://formspree.io — create a form linked to connect@ruralsystems.org
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
-      // Show success message
+  document.querySelectorAll('form[data-form]').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
-      btn.textContent = 'Message Sent ✓';
-      btn.disabled = true;
-      btn.style.background = 'var(--accent-green)';
+      const originalBg = btn.style.background;
+      const formType = form.getAttribute('data-form');
 
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-        btn.style.background = '';
-        form.reset();
-      }, 3000);
+      // Loading state
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      // Collect form data and add metadata
+      const formData = new FormData(form);
+      formData.append('_form_type', formType);
+      formData.append('_subject', `Rural Systems — ${formType.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}`);
+
+      try {
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          // Success
+          btn.textContent = 'Message Received ✓';
+          btn.style.background = 'var(--accent-green)';
+          btn.style.opacity = '1';
+          form.reset();
+
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+            btn.style.background = originalBg;
+          }, 4000);
+        } else {
+          throw new Error('Server responded with an error');
+        }
+      } catch (error) {
+        // Error state
+        btn.textContent = 'Error — Please try again';
+        btn.style.background = 'var(--accent-terracotta)';
+        btn.style.opacity = '1';
+
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+          btn.style.background = originalBg;
+        }, 3000);
+      }
     });
   });
 
