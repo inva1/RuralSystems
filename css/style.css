@@ -1180,3 +1180,90 @@ blockquote cite {
 .card-grid--5 { grid-template-columns: repeat(5, 1fr); }
 @media (max-width: 1100px) { .card-grid--5 { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 700px) { .card-grid--5 { grid-template-columns: 1fr; } }
+
+/* --- Impact Metrics --- */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.impact-item {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  transition: border-color var(--transition-base);
+}
+
+.impact-item:hover {
+  border-color: var(--accent-gold);
+}
+
+.impact-number {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--accent-gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.impact-label {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: block;
+  line-height: 1.5;
+}
+
+/* --- Resource Pathways --- */
+.pathway-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.pathway-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: all var(--transition-base);
+}
+
+.pathway-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.pathway-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold-dim);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  width: fit-content;
+}
+
+.pathway-card h4 { margin: 0; }
+.pathway-card p { flex: 1; font-size: 0.95rem; margin: 0; }
+
+@media (max-width: 900px) {
+  .impact-grid { grid-template-columns: repeat(2, 1fr); }
+  .pathway-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .impact-grid { grid-template-columns: 1fr; }
+}
+
