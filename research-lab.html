@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Independent Research Lab — Rural Systems</title>
+  <meta name="description" content="The independent, non-profit research lab of Rural Systems, led by Principal Investigator Nnaemeka Emmanuel.">
+  <meta name="theme-color" content="#0D0F0E">
+  <link rel="icon" type="image/x-icon" href="/images/favicons/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .lab-page { background: var(--bg-primary); }
+    .lab-header { padding: 1.25rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .lab-header-inner { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .lab-mark { color:var(--text-primary); letter-spacing:.06em; text-transform:uppercase; font-size:.72rem; }
+    .lab-mark span { color:var(--accent-gold); }
+    .lab-home { color:var(--text-secondary); font-size:.85rem; }
+    .lab-home:hover { color:var(--accent-gold); }
+    .lab-hero { min-height: 74vh; display:flex; align-items:center; position:relative; overflow:hidden; }
+    .lab-hero::before { content:""; position:absolute; width:42rem; height:42rem; right:-12rem; top:-14rem; border-radius:50%; background:radial-gradient(circle, rgba(74,124,89,.32), transparent 68%); pointer-events:none; }
+    .lab-hero::after { content:"RS / 01"; position:absolute; right:6vw; bottom:2.5rem; color:rgba(201,168,76,.45); font: 600 clamp(4rem,12vw,10rem)/1 var(--font-heading); letter-spacing:-.08em; }
+    .lab-hero-content { position:relative; z-index:1; max-width:60rem; }
+    .lab-kicker { color:var(--accent-gold); letter-spacing:.18em; text-transform:uppercase; font-size:.72rem; }
+    .lab-hero h1 { max-width: 12ch; margin-top:1rem; font-size:clamp(3.2rem,8vw,7rem); line-height:.98; }
+    .lab-hero .lead { max-width: 42rem; margin-top:1.5rem; color:var(--text-secondary); font-size:clamp(1.1rem,2vw,1.4rem); line-height:1.65; }
+    .lab-rule { width:5rem; height:2px; background:var(--accent-gold); margin:2rem 0; }
+    .lab-section { padding:clamp(4rem,9vw,8rem) 0; }
+    .lab-section--dark { background:var(--bg-secondary); }
+    .lab-section--accent { background:var(--bg-tertiary); }
+    .lab-intro { display:grid; grid-template-columns: .8fr 1.2fr; gap:clamp(2rem,8vw,8rem); align-items:start; }
+    .lab-intro h2, .lab-section h2 { font-size:clamp(2rem,4vw,3.6rem); line-height:1.08; }
+    .lab-copy p { color:var(--text-secondary); font-size:1.05rem; line-height:1.8; }
+    .lab-label { display:block; color:var(--accent-gold); text-transform:uppercase; letter-spacing:.14em; font-size:.7rem; margin-bottom:1rem; }
+    .lab-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:3rem; }
+    .lab-card { padding:clamp(1.35rem,3vw,2.2rem); border:1px solid var(--border-subtle); border-radius:12px; background:var(--bg-card); min-height:13rem; }
+    .lab-card:hover { border-color:var(--accent-gold); transform:translateY(-3px); transition:all .25s ease; }
+    .lab-card__number { color:var(--accent-gold); font:1.1rem var(--font-heading); }
+    .lab-card h3 { margin:.9rem 0 .65rem; font-size:1.25rem; }
+    .lab-card p { color:var(--text-secondary); line-height:1.65; margin:0; }
+    .lab-network { display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,7vw,7rem); align-items:center; }
+    .lab-network-diagram { border:1px solid var(--border-subtle); border-radius:16px; padding:1.2rem; background:var(--bg-primary); }
+    .lab-network-diagram svg { display:block; width:100%; height:auto; }
+    .lab-network-list { list-style:none; padding:0; margin:2rem 0 0; }
+    .lab-network-list li { display:flex; gap:1rem; padding:1rem 0; border-top:1px solid var(--border-subtle); color:var(--text-secondary); line-height:1.55; }
+    .lab-network-list strong { display:block; color:var(--text-primary); margin-bottom:.2rem; }
+    .lab-network-list b { color:var(--accent-gold); font-weight:400; }
+    .lab-pi { display:grid; grid-template-columns:180px 1fr; gap:2rem; align-items:start; max-width:58rem; }
+    .lab-monogram { width:160px; height:160px; display:grid; place-items:center; border-radius:50%; border:1px solid var(--accent-gold); color:var(--accent-gold); font:4rem var(--font-heading); background:var(--bg-primary); }
+    .lab-pi h2 { margin-bottom:.35rem; }
+    .lab-pi-title { color:var(--accent-gold); margin-bottom:1.25rem; }
+    .lab-pi p { color:var(--text-secondary); line-height:1.8; }
+    .lab-principles { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border-subtle); border:1px solid var(--border-subtle); margin-top:3rem; }
+    .lab-principle { background:var(--bg-primary); padding:1.6rem; }
+    .lab-principle strong { display:block; color:var(--text-primary); margin-bottom:.5rem; }
+    .lab-principle span { color:var(--text-secondary); font-size:.9rem; line-height:1.55; }
+    .lab-cta { text-align:center; max-width:46rem; margin:0 auto; }
+    .lab-cta p { color:var(--text-secondary); font-size:1.1rem; line-height:1.7; margin:1rem auto 2rem; }
+    .lab-footer { padding:2rem 0; border-top:1px solid var(--border-subtle); color:var(--text-muted); font-size:.8rem; }
+    @media (max-width:800px) { .lab-intro,.lab-network { grid-template-columns:1fr; } .lab-grid { grid-template-columns:1fr; } .lab-principles { grid-template-columns:repeat(2,1fr); } .lab-pi { grid-template-columns:1fr; } }
+    @media (max-width:520px) { .lab-header-inner { align-items:flex-start; flex-direction:column; } .lab-principles { grid-template-columns:1fr; } .lab-hero { min-height:72vh; } }
+  </style>
+</head>
+<body class="lab-page">
+  <header class="lab-header">
+    <div class="container lab-header-inner">
+      <div class="lab-mark">Rural Systems <span>/</span> Independent Research Lab</div>
+      <a class="lab-home" href="index.html">← Rural Systems</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="lab-hero">
+      <div class="container lab-hero-content">
+        <span class="lab-kicker">An independent, non-profit research lab</span>
+        <h1>Build the evidence before you build the system.</h1>
+        <div class="lab-rule"></div>
+        <p class="lead">The Rural Systems Research Lab studies the technical, institutional, and social architecture required for rural communities to own their future — beginning with community networks and connectivity that serve local agency rather than extractive growth.</p>
+      </div>
+    </section>
+
+    <section class="lab-section lab-section--dark">
+      <div class="container lab-intro">
+        <div><span class="lab-label">Why the lab exists</span><h2>Rural development is an engineering problem — and a knowledge problem.</h2></div>
+        <div class="lab-copy"><p>Too much rural infrastructure is designed from a distance, measured by deployment rather than usefulness, and operated without the people who depend on it. The lab exists to make the hidden assumptions visible.</p><p>We produce practical research for communities, builders, public institutions, and aligned capital: field-tested architectures, open protocols, governance models, and evidence about what creates durable capability.</p><p>Our work is independent in inquiry and non-profit in purpose. It is connected to the wider Rural Systems vision, but research is not a sales funnel. The question comes first.</p></div>
+      </div>
+    </section>
+
+    <section class="lab-section">
+      <div class="container">
+        <span class="lab-label">Research agenda</span>
+        <h2>Four questions shape the work.</h2>
+        <div class="lab-grid">
+          <article class="lab-card"><span class="lab-card__number">01</span><h3>Who owns the network?</h3><p>How can communities govern connectivity, tariffs, maintenance, access, and data as a shared utility rather than a passive service?</p></article>
+          <article class="lab-card"><span class="lab-card__number">02</span><h3>What survives the outage?</h3><p>Which local-first services, energy systems, backhaul choices, and operating practices keep essential communication useful when the wider network fails?</p></article>
+          <article class="lab-card"><span class="lab-card__number">03</span><h3>Does access create agency?</h3><p>How does connectivity change local trade, learning, health, governance, and the bargaining power of rural people — not merely their consumption?</p></article>
+          <article class="lab-card"><span class="lab-card__number">04</span><h3>What can be repeated?</h3><p>Which technical standards, cooperative rules, financing mechanisms, and measurement methods can travel from one village without erasing local context?</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-section lab-section--accent">
+      <div class="container lab-network">
+        <div>
+          <span class="lab-label">Flagship inquiry</span>
+          <h2>The community network as a digital commons.</h2>
+          <div class="lab-copy"><p>Our starting proposition is simple: rural connectivity should be treated as a community-owned layer of infrastructure, alongside land, energy, water, housing, and economic institutions.</p></div>
+          <ul class="lab-network-list">
+            <li><b>01</b><div><strong>Local first</strong>Offline-capable information, learning, governance, and service layers remain useful without backhaul.</div></li>
+            <li><b>02</b><div><strong>Resilient by design</strong>Fiber, microwave, fixed wireless, or satellite are paired with energy backup and a clear fallback path.</div></li>
+            <li><b>03</b><div><strong>Owned in place</strong>The village cooperative governs access, tariffs, maintenance reserves, consent, and data rights.</div></li>
+            <li><b>04</b><div><strong>Measured for dignity</strong>We track reliability, inclusion, local capability, trust, and productive use — not just megabits.</div></li>
+          </ul>
+        </div>
+        <div class="lab-network-diagram" aria-label="Diagram showing a community-owned local network connected to essential village institutions and resilient backhaul">
+          <svg viewBox="0 0 520 430" role="img" xmlns="http://www.w3.org/2000/svg">
+            <defs><filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <rect width="520" height="430" rx="12" fill="#0D0F0E"/>
+            <g stroke="#4A7C59" stroke-width="2" opacity=".7"><path d="M260 210L105 105M260 210L415 105M260 210L105 325M260 210L415 325M260 210L260 55"/><path d="M105 105L415 105M105 325L415 325" stroke-dasharray="5 8"/></g>
+            <g fill="#1E2221" stroke="#C9A84C"><circle cx="260" cy="210" r="67" fill="#252928" stroke-width="3" filter="url(#glow)"/><circle cx="260" cy="55" r="30"/><circle cx="105" cy="105" r="30"/><circle cx="415" cy="105" r="30"/><circle cx="105" cy="325" r="30"/><circle cx="415" cy="325" r="30"/></g>
+            <g fill="#F0EDE6" text-anchor="middle" font-family="Arial, sans-serif"><text x="260" y="204" font-size="16">COMMUNITY</text><text x="260" y="224" font-size="16">NETWORK</text><text x="260" y="60" font-size="11">BACKHAUL</text><text x="105" y="101" font-size="11">SCHOOL</text><text x="415" y="101" font-size="11">CLINIC</text><text x="105" y="321" font-size="11">MARKET</text><text x="415" y="321" font-size="11">CO-OP</text></g>
+            <g fill="#A89F91" text-anchor="middle" font-family="Arial, sans-serif" font-size="10"><text x="260" y="86">resilient link</text><text x="260" y="395">local governance • local support • local data dignity</text></g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-section">
+      <div class="container">
+        <div class="lab-pi">
+          <div class="lab-monogram">NE</div>
+          <div><span class="lab-label">Principal investigator</span><h2>Nnaemeka Emmanuel</h2><div class="lab-pi-title">Founder, Rural Systems · Principal Investigator</div><p>My work begins with a conviction formed in rural Nigeria: communities are not short of intelligence, ambition, or resilience. They are surrounded by systems that fail to compound those assets.</p><p>As principal investigator, I set the lab’s research direction and remain accountable for its intellectual honesty, field relevance, and relationship to the communities whose knowledge makes the work possible.</p></div>
+        </div>
+        <div class="lab-principles">
+          <div class="lab-principle"><strong>Community before deployment</strong><span>Nothing is successful if people cannot govern, repair, or meaningfully use it.</span></div>
+          <div class="lab-principle"><strong>Proof over promise</strong><span>We publish what failed, what changed, and what the evidence actually supports.</span></div>
+          <div class="lab-principle"><strong>Open where possible</strong><span>Methods, protocols, and learning should be available to the people building on them.</span></div>
+          <div class="lab-principle"><strong>Dignity as a measure</strong><span>Performance includes agency, fairness, trust, and local capability — not only technical output.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-section lab-section--dark">
+      <div class="container lab-cta"><span class="lab-label">Work with the lab</span><h2>Bring a hard question.</h2><p>We are interested in field partnerships, community-led experiments, open technical collaboration, and research that can make rural systems more capable and more accountable.</p><a href="mailto:research@ruralsystems.org" class="btn btn--primary">Start a research conversation <span class="arrow">→</span></a></div>
+    </section>
+  </main>
+
+  <footer class="lab-footer"><div class="container"><span>Rural Systems Independent Research Lab · Nnaemeka Emmanuel, Principal Investigator</span></div></footer>
+</body>
+</html>
